@@ -25,7 +25,10 @@ CREATE TABLE orders (
         ),
     total_amount DECIMAL(15,2) NOT NULL CHECK (total_amount >= 0),
 
--- Timestamps
+    -- Связь со складом
+    warehouse_id BIGINT,
+
+    -- Timestamps
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
@@ -33,5 +36,5 @@ CREATE TABLE orders (
 
 -- +goose Down
 -- +goose StatementBegin
-DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS warehouses;
 -- +goose StatementEnd
